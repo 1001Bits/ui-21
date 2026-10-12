@@ -14,7 +14,7 @@ TEST_CASE("every catalog window has a unique id and all its fields") {
         CHECK_FALSE(window.label.empty());
         CHECK(std::string_view(window.glyph).size() == 3);
         if (window.id == "ui21Settings") {
-            CHECK(window.label == "UI 21 Settings");
+            CHECK(window.label == "MOD SETTINGS");
             CHECK(window.module == nullptr);
             CHECK(window.plugin == nullptr);
         } else {

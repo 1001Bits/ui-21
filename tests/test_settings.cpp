@@ -25,10 +25,14 @@ TEST_CASE("settings registry includes only flagged modal panels") {
     CHECK(panel.id == 3);
     CHECK(std::string_view(panel.label) == "Dev Tools");
     CHECK(std::string_view(panel.icon) == "\xEF\x97\xBD");
-    CHECK(std::string_view(registry.Category(3)) == "UI 21");
+    CHECK(std::string_view(registry.Category(3)) == "Script Extender");
     desc.settingsCategory = "MCM";
     registry.Add(4, desc);
     CHECK(std::string_view(registry.Category(4)) == "MCM");
+    desc.settingsCategory = "UI 21";
+    registry.Add(5, desc);
+    CHECK(std::string_view(registry.Category(5)) == "Script Extender");
+    CHECK(std::string_view(registry.Category(0)) == "Script Extender");
 }
 
 TEST_CASE("settings selection remembers a valid panel and rejects ordinary clients") {

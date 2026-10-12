@@ -35,7 +35,7 @@ namespace b21ui::client {
                 ImGui::TextUnformatted(modern::icon::Gear);
                 ImGui::PopStyleColor();
                 ImGui::SameLine(0, theme::Px(12));
-                ImGui::TextUnformatted("UI 21 Settings");
+                ImGui::TextUnformatted("MOD SETTINGS");
             }
             ImGui::SameLine();
             ImGui::SetCursorPosX(ImGui::GetWindowWidth() - theme::Px(24) - 4 * ImGui::GetFrameHeight() - 3 * ImGui::GetStyle().ItemSpacing.x);
@@ -60,7 +60,7 @@ namespace b21ui::client {
                 const std::string category = SettingsCategory(panel.id);
                 if (std::ranges::find(categories, category) == categories.end()) categories.push_back(category);
             }
-            std::stable_partition(categories.begin(), categories.end(), [](const auto& category) { return category == "UI 21"; });
+            std::stable_partition(categories.begin(), categories.end(), [](const auto& category) { return category == "Script Extender"; });
             for (const auto& category : categories) {
                 w::Heading(category.c_str());
                 for (const auto& panel : panels) {

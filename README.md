@@ -111,8 +111,8 @@ Without the file the page lists no links.
 
 ### Shared settings menu
 
-The elected host adds **UI 21 Settings** to Fallout 4's pause menu when at least one settings
-panel is registered. The window lists panels with icons under **UI 21** in its left sidebar,
+The elected host adds **MOD SETTINGS** to Fallout 4's pause menu when at least one settings
+panel is registered. The window lists panels with icons under **Script Extender** in its left sidebar,
 above **MCM** regardless of registration order.
 Panels are discovered across all loaded UI21 plugins; they do not belong in the window catalog.
 Switching panels keeps the cursor, input ownership and game pause active.
@@ -137,7 +137,8 @@ remain easy to reach. Clients must update their state in `Draw` even when naviga
 `modern::w::NavigationItem` for consistent icons, selection and controller hit areas. Interactive captures can own
 Esc/B through ImGui's key ownership API to prevent the host from closing while cancelling.
 An omitted icon defaults to a gear; an omitted label uses the client name.
-`settingsCategory` defaults to **UI 21**. The shared Appearance popover applies one theme, opacity
+`settingsCategory` defaults to **Script Extender**; older clients using **UI 21** join the same group.
+The shared Appearance popover applies one theme, opacity
 and text scale to every settings panel, including panels in other DLLs; it uses
 `[Modern.UI21_Settings]` in `B21UI.ini`, falling back to `[Modern]`.
 
@@ -145,8 +146,8 @@ and text scale to every settings panel, including panels in other DLLs; it uses
 first registered). Opening a registered settings client directly selects it in the same host.
 DevTools embeds its full workbench through a separate settings client and also retains its
 standalone hotkey window. Both use the same pages, actions and saved workspace. Tales'
-configuration is a settings client. Map and Music Player remain ordinary clients and can
-register separate settings panels later.
+configuration is a settings client. Full Screen Map has a dedicated modern settings panel
+sharing the map's existing options and saved values. Music Player remains an ordinary client.
 
 ### Native MCM replacement
 
@@ -190,7 +191,7 @@ backend. It prints write/callback/event payloads; it does not execute game callb
 
 ## Keybinding discovery (read-only V1)
 
-The elected host adds **Keybindings** under **UI 21**. It collects bound entries from all 33
+The elected host adds **Keybindings** under **Script Extender**. It collects bound entries from all 33
 Fallout 4 control-map contexts, MCM keybind definitions/current assignments, and native mod
 providers. Opening the page or pressing Refresh takes a new game-thread snapshot. The list
 puts overlapping bindings first, with action, source, state, modifiers and an Activation column.

@@ -112,7 +112,7 @@ namespace b21ui {
         r->name = options.name ? options.name : "";
         r->settingsLabel = options.settingsLabel ? options.settingsLabel : "";
         r->settingsIcon = options.settingsIcon ? options.settingsIcon : "";
-        r->settingsCategory = options.settingsCategory ? options.settingsCategory : "UI 21";
+        r->settingsCategory = options.settingsCategory ? options.settingsCategory : "Script Extender";
         r->options = options;
         r->options.name = nullptr;
         r->runtime = std::make_unique<client::ClientRuntime>(client, r->name, options.padPointer,
@@ -203,7 +203,7 @@ namespace b21ui {
     }
     const char* SettingsCategory(B21UI_ClientId id) {
         return host && host->size >= offsetof(B21UI_HostApi, settingsCategory) + sizeof(host->settingsCategory) &&
-            host->settingsCategory ? host->settingsCategory(id) : "UI 21";
+            host->settingsCategory ? host->settingsCategory(id) : "Script Extender";
     }
     Device ActiveDevice() { return host ? static_cast<Device>(host->activeDevice()) : Device::KeyboardMouse; }
     void SetCursor(float x, float y) { if (host) host->setCursor(x, y); }

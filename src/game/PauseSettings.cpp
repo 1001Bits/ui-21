@@ -17,7 +17,7 @@ namespace {
 
 using Value = Scaleform::GFx::Value;
 
-constexpr const char* kEntryText = "UI 21 Settings";
+constexpr const char* kEntryText = "MOD SETTINGS";
 constexpr int kEntryIndex = -210077;
 
 class EntryPress final : public Scaleform::GFx::FunctionHandler {
@@ -71,7 +71,7 @@ bool TextIs(const Value& row, std::string_view text)
 }
 
 // The pause list is authored with 9 row clips and a border that fits 9 rows; vanilla AE fills 8 and
-// PHOTO MODE the ninth, so UI 21 Settings would only be reachable by scrolling. SetNumListItems is
+// PHOTO MODE the ninth, so MOD SETTINGS would only be reachable by scrolling. SetNumListItems is
 // protected, so the extra clips are built the way it builds them, wired to the list's public handlers.
 const char* GrowList(Scaleform::GFx::Movie& movie, Value& list, std::uint32_t rows)
 {
@@ -182,7 +182,7 @@ const char* EnsureEntry(RE::IMenu& menu)
     if (!list.Invoke("InvalidateData")) return "InvalidateData failed";
     if (!announced) {
         announced = true;
-        spdlog::info("UI21: UI 21 Settings is row {} of {}{}{}", position + 1, count + 1,
+        spdlog::info("UI21: MOD SETTINGS is row {} of {}{}{}", position + 1, count + 1,
             notGrown ? "; list not grown, row needs scrolling: " : "", notGrown ? notGrown : "");
     }
     return nullptr;
@@ -196,7 +196,7 @@ void AdvancePause(RE::IMenu* menu, float delta, std::uint64_t time)
     if (!menu) return;
     // The first frames after opening have no list yet, so only a failure that persists is reported.
     if (const auto* failure = EnsureEntry(*menu); !failure) failedFrames = 0;
-    else if (++failedFrames == 120) spdlog::warn("UI21: no UI 21 Settings row in the pause menu: {}", failure);
+    else if (++failedFrames == 120) spdlog::warn("UI21: no MOD SETTINGS row in the pause menu: {}", failure);
 }
 
 REL::Relocation<void (*)(RE::IMenu*)> initPauseList;

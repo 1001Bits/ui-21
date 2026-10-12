@@ -3,7 +3,7 @@
 
 // Demo builds override this to exercise the election; release builds never define it.
 #ifndef B21UI_FRAMEWORK_VERSION
-#define B21UI_FRAMEWORK_VERSION 12u
+#define B21UI_FRAMEWORK_VERSION 13u
 #endif
 
 namespace b21ui {

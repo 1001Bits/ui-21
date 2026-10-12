@@ -31,11 +31,11 @@ namespace b21ui {
         // Kit sizes grow with the display (height / 1080, never below 1). Views laid out in physical
         // pixels, like the map's former web UI, turn this off and scale with the text scale alone.
         bool scaleWithResolution = true;
-        // Draw this client's content inside UI 21 Settings, with a shared mod selector on the left.
+        // Draw this client's content inside MOD SETTINGS, with a shared mod selector on the left.
         bool settings = false;
         const char* settingsLabel = "";
         const char* settingsIcon = "";
-        const char* settingsCategory = "UI 21";
+        const char* settingsCategory = "Script Extender";
     };
 
     class Client {

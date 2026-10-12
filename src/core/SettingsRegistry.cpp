@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <string_view>
 
 namespace b21ui::core {
     void SettingsRegistry::Add(B21UI_ClientId id, const B21UI_ClientDesc& desc) {
@@ -13,9 +14,10 @@ namespace b21ui::core {
         const char* icon = "\xEF\x80\x93";
         if (desc.size >= offsetof(B21UI_ClientDesc, settingsIcon) + sizeof(desc.settingsIcon) &&
             desc.settingsIcon && desc.settingsIcon[0]) icon = desc.settingsIcon;
-        const char* category = "UI 21";
+        const char* category = "Script Extender";
         if (desc.size >= offsetof(B21UI_ClientDesc, settingsCategory) + sizeof(desc.settingsCategory) &&
             desc.settingsCategory && desc.settingsCategory[0]) category = desc.settingsCategory;
+        if (std::string_view(category) == "UI 21") category = "Script Extender";
         panels_.push_back({id, label ? label : "", icon, category});
     }
 
@@ -25,7 +27,7 @@ namespace b21ui::core {
 
     const char* SettingsRegistry::Category(B21UI_ClientId id) const {
         for (const auto& panel : panels_) if (panel.id == id) return panel.category.c_str();
-        return "UI 21";
+        return "Script Extender";
     }
 
     B21UI_ClientId SettingsRegistry::Resolve(B21UI_ClientId id) const {
